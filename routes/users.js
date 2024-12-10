@@ -1,5 +1,13 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import User from "../models/users.js";
+const Users = require("../models/user");
 
-export default router;
+router.get("/", (req, res) => {
+  res.json({ message: "Get all users" });
+});
+
+router.post("/", (req, res) => {
+  res.json({ message: "Create a new user" });
+});
+
+module.exports = router;

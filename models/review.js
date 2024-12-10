@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const reviewsSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
   title: { type: String, required: true },
   product: { type: String, required: true },
   user: { type: String, required: true },
@@ -9,6 +9,6 @@ const reviewsSchema = new mongoose.Schema({
   verified: { type: Boolean, default: false },
 });
 
-const Reviews = mongoose.model("Reviews", reviewsSchema);
+const Review = mongoose.model("Review", reviewSchema);
 
-module.exports = Fruit;
+module.exports = Review;
