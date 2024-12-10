@@ -11,6 +11,25 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+router.get("/new", async (req, res) => {
+  res.render("products/New");
+});
+router.post("/new", async (req, res) => {
+  const { name, price, quantity, category, rating, isAvailable } = req.body;
+  try {
+    const newProduct = await Products.create({
+      name,
+      price,
+      quantity,
+      category,
+      rating,
+      isAvailable: isAvailable === "on",
+    });
+    res.status(201).redirect("/products");
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 // GET a single product
 router.get("/:id", async (req, res) => {
@@ -26,24 +45,6 @@ router.get("/:id", async (req, res) => {
 });
 
 // POST a new product
-router.post("/", async (req, res) => {
-  const { name, price, quantity, description, category, image } = req.body;
-  try {
-    const newProduct = await Products.create({
-      name,
-      price,
-      quantity,
-      description,
-      category,
-      image,
-      rating: 0, // Default rating
-      isAvailable: true, // Default availability
-    });
-    res.status(201).json(newProduct);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
 
 // DELETE a product
 router.delete("/:id", async (req, res) => {
