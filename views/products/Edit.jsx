@@ -3,25 +3,43 @@ const React = require("react");
 class Edit extends React.Component {
   render() {
     return (
-      <form action={`/api/fruits/${this.props.id}?_method=PUT`} method="POST">
+      <form action={`/products/${this.props.id}?_method=PUT`} method="POST">
         Name:{" "}
-        <input type="text" name="name" defaultValue={this.props.fruit.name} />{" "}
+        <input
+          type="text"
+          name="name"
+          defaultValue={this.props.products.name}
+        />{" "}
         <br />
         Color:{" "}
         <input
           type="text"
           name="color"
-          defaultValue={this.props.fruit.color}
+          defaultValue={this.props.products.color}
         />{" "}
         <br />
-        Is Ready to Eat:
-        {this.props.fruit.readyToEat ? (
-          <input type="checkbox" name="readyToEat" defaultChecked />
+        Color:{" "}
+        <input
+          type="text"
+          name="color"
+          defaultValue={this.props.products.color}
+        />{" "}
+        <br />
+        Color:{" "}
+        <input
+          type="text"
+          name="color"
+          defaultValue={this.props.products.color}
+        />{" "}
+        <br />
+        Is Available:
+        {this.props.products.isAvailable ? (
+          <input type="checkbox" name="isAvailable" defaultChecked />
         ) : (
-          <input type="checkbox" name="readyToEat" />
+          <input type="checkbox" name="isAvailable" />
         )}
         <br />
-        <input type="submit" name="" value="Edit Fruit" />
+        <input type="submit" name="" value="Edit Products" />
       </form>
     );
   }

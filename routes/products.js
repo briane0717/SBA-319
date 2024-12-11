@@ -6,7 +6,7 @@ const Products = require("../models/products"); // Product model
 router.get("/", async (req, res) => {
   try {
     const products = await Products.find({});
-    res.status(200).json(products);
+    res.render("products", { products: JSON.stringify(products) });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -30,15 +30,39 @@ router.post("/new", async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
+router.get("/edit", async (req, res) => {
+  res.render("products/Edit");
+});
+router.put("/:id", async (req, res) => {
+  if (req.body.isAvailable === "on") {
+    // if checked, req.body.isAvailable is set to 'on'
+    req.body.isAvailable = true;
+  } else {
+    // if not checked, req.body.isAvailable is undefined
+    req.body.isAvailable = false;
+  }
+
+  try {
+    const updatedProducts = await Products.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    console.log(updatedProducts);
+    res.redirect(`/products/${req.params.id}`);
+  } catch (err) {
+    res.send(err).status(400);
+  }
+});
 
 // GET a single product
-router.get("/:id", async (req, res) => {
+router.get("/edit/:id", async (req, res) => {
   try {
     const product = await Products.findById(req.params.id);
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
-    res.status(200).json(product);
+    res.render("products/Edit", { products: product, id: product._id });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
