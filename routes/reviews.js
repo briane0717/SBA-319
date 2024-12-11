@@ -39,11 +39,11 @@ router.post("/new", async (req, res) => {
 // Show form to edit an existing review
 router.get("/edit/:id", async (req, res) => {
   try {
-    const reviews = await Reviews.findById(req.params.id);
-    if (!reviews) {
+    const review = await Reviews.findById(req.params.id);
+    if (!review) {
       return res.status(404).json({ message: "Review not found" });
     }
-    res.render("reviews/Edit", { reviews: reviews, id: reviews._id });
+    res.render("reviews/Edit", { review: review }); // Passing 'review' to the Edit component
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

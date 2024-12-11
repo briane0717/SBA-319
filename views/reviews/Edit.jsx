@@ -2,44 +2,52 @@ const React = require("react");
 
 class Edit extends React.Component {
   render() {
+    const review = this.props.review; // Access the review data passed from the route
     return (
-      <form action={`/products/${this.props.id}?_method=PUT`} method="POST">
-        Name:{" "}
+      <form action={`/reviews/${review._id}?_method=PUT`} method="POST">
+        Title:{" "}
         <input
           type="text"
-          name="name"
-          defaultValue={this.props.products.name}
+          name="title"
+          defaultValue={review.title} // Use 'review.title' here
         />
         <br />
-        Price:{" "}
-        <input
-          type="number"
-          name="price"
-          defaultValue={this.props.products.price}
-        />
-        <br />
-        Quantity:{" "}
-        <input
-          type="number"
-          name="quantity"
-          defaultValue={this.props.products.quantity}
-        />
-        <br />
-        Category:{" "}
+        Product:{" "}
         <input
           type="text"
-          name="category"
-          defaultValue={this.props.products.category}
+          name="product"
+          defaultValue={review.product} // Use 'review.product' here
         />
         <br />
-        Is Available:
-        {this.props.products.isAvailable ? (
-          <input type="checkbox" name="isAvailable" defaultChecked />
-        ) : (
-          <input type="checkbox" name="isAvailable" />
-        )}
+        User:{" "}
+        <input
+          type="text"
+          name="user"
+          defaultValue={review.user} // Use 'review.user' here
+        />
         <br />
-        <button type="submit">Edit Product</button>
+        Body:{" "}
+        <input
+          type="text"
+          name="body"
+          defaultValue={review.body} // Use 'review.body' here
+        />
+        <br />
+        Rating:{" "}
+        <input
+          type="number"
+          name="rating"
+          defaultValue={review.rating} // Use 'review.rating' here
+        />
+        <br />
+        Verified:{" "}
+        <input
+          type="checkbox"
+          name="verified"
+          defaultChecked={review.verified} // Use 'review.verified' here
+        />
+        <br />
+        <button type="submit">Edit Review</button>
       </form>
     );
   }

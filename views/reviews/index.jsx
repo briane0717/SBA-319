@@ -1,4 +1,3 @@
-// ReviewsIndex.jsx
 const React = require("react");
 
 function ReviewsIndex({ reviews }) {
@@ -18,9 +17,15 @@ function ReviewsIndex({ reviews }) {
             <p>{review.body}</p>
             <p>Rating: {review.rating}</p>
             <p>{review.verified ? "Verified" : "Not Verified"}</p>
+
+            {/* Add the Edit button here */}
+            <a href={`/reviews/edit/${review._id}`}>
+              <button type="button">Edit Review</button>
+            </a>
           </li>
         ))}
       </ul>
+
       <a href="/reviews/new">
         <button type="button">Add New Review</button>
       </a>
