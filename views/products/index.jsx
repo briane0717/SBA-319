@@ -14,7 +14,7 @@ function ProductIndex({ products }) {
           <li key={product._id}>
             <a href={`/products/${product._id}`}>{product.name}</a> - $
             {product.price.toFixed(2)} <br />
-            <a href={`/products/${product._id}/edit`}>Edit</a> |{" "}
+            <a href={`/products/edit/${product._id}`}>Edit</a> |{" "}
             <form
               action={`/products/${product._id}?_method=DELETE`}
               method="POST"

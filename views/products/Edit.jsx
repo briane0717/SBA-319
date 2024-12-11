@@ -11,25 +11,25 @@ class Edit extends React.Component {
           defaultValue={this.props.products.name}
         />{" "}
         <br />
-        Color:{" "}
+        Price:{" "}
         <input
-          type="text"
-          name="color"
-          defaultValue={this.props.products.color}
+          type="number"
+          name="price"
+          defaultValue={this.props.products.price}
         />{" "}
         <br />
-        Color:{" "}
+        Quantity:{" "}
         <input
-          type="text"
-          name="color"
-          defaultValue={this.props.products.color}
+          type="number"
+          name="quantity"
+          defaultValue={this.props.products.quantity}
         />{" "}
         <br />
-        Color:{" "}
+        Category:{" "}
         <input
           type="text"
-          name="color"
-          defaultValue={this.props.products.color}
+          name="category"
+          defaultValue={this.props.products.category}
         />{" "}
         <br />
         Is Available:
@@ -39,7 +39,7 @@ class Edit extends React.Component {
           <input type="checkbox" name="isAvailable" />
         )}
         <br />
-        <input type="submit" name="" value="Edit Products" />
+        <input type="submit" value="Edit Products" />
       </form>
     );
   }

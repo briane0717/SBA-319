@@ -49,7 +49,7 @@ router.put("/:id", async (req, res) => {
       { new: true }
     );
     console.log(updatedProducts);
-    res.redirect(`/products/${req.params.id}`);
+    res.redirect("/products");
   } catch (err) {
     res.send(err).status(400);
   }
