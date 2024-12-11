@@ -18,10 +18,19 @@ function ReviewsIndex({ reviews }) {
             <p>Rating: {review.rating}</p>
             <p>{review.verified ? "Verified" : "Not Verified"}</p>
 
-            {/* Add the Edit button here */}
+            {/* Edit Button */}
             <a href={`/reviews/edit/${review._id}`}>
               <button type="button">Edit Review</button>
             </a>
+
+            {/* Delete Button Form */}
+            <form
+              action={`/reviews/${review._id}?_method=DELETE`}
+              method="POST"
+              style={{ display: "inline", marginLeft: "10px" }}
+            >
+              <button type="submit">Delete Review</button>
+            </form>
           </li>
         ))}
       </ul>
@@ -33,4 +42,4 @@ function ReviewsIndex({ reviews }) {
   );
 }
 
-module.exports = ReviewsIndex; // Correct export
+module.exports = ReviewsIndex;

@@ -45,7 +45,7 @@ router.get("/edit/:id", async (req, res) => {
     }
     res.render("reviews/Edit", { review: review }); // Passing 'review' to the Edit component
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 });
 
@@ -71,13 +71,14 @@ router.put("/:id", async (req, res) => {
 });
 
 // DELETE a review
+// Delete a review
 router.delete("/:id", async (req, res) => {
   try {
-    const deletedReviews = await Reviews.findByIdAndDelete(req.params.id);
-    if (!deletedReviews) {
+    const review = await Reviews.findByIdAndDelete(req.params.id);
+    if (!review) {
       return res.status(404).json({ message: "Review not found" });
     }
-    res.status(200).redirect("/reviews");
+    res.redirect("/reviews"); // Redirect to the reviews index after deletion
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
