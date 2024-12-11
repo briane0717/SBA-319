@@ -77,7 +77,7 @@ router.delete("/:id", async (req, res) => {
     if (!deletedProduct) {
       return res.status(404).json({ message: "Product not found" });
     }
-    res.status(200).json({ message: "Product deleted successfully" });
+    res.status(200).redirect("/products");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
