@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 });
 app.get("/", (req, res) => res.send("<h1>Welcome Home 🏡</h1>"));
 app.use("/products", productsRoute);
-// app.use("/api/reviews", reviewsRoute);
+app.use("/reviews", reviewsRoute);
 app.use("/users", usersRoute);
 
 app.listen(PORT, () => {
