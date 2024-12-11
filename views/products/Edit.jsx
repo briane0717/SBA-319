@@ -9,28 +9,28 @@ class Edit extends React.Component {
           type="text"
           name="name"
           defaultValue={this.props.products.name}
-        />{" "}
+        />
         <br />
         Price:{" "}
         <input
           type="number"
           name="price"
           defaultValue={this.props.products.price}
-        />{" "}
+        />
         <br />
         Quantity:{" "}
         <input
           type="number"
           name="quantity"
           defaultValue={this.props.products.quantity}
-        />{" "}
+        />
         <br />
         Category:{" "}
         <input
           type="text"
           name="category"
           defaultValue={this.props.products.category}
-        />{" "}
+        />
         <br />
         Is Available:
         {this.props.products.isAvailable ? (
@@ -39,7 +39,7 @@ class Edit extends React.Component {
           <input type="checkbox" name="isAvailable" />
         )}
         <br />
-        <input type="submit" value="Edit Products" />
+        <button type="submit">Edit Product</button>
       </form>
     );
   }

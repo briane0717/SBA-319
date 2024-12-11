@@ -8,13 +8,22 @@ function ProductIndex({ products }) {
   return (
     <div>
       <h1>Product List</h1>
-      {/* <a href="/products/">Add New Product</a> */}
+      <a href="/products/new">
+        <button type="button">Add New Product</button>
+      </a>
       <ul>
         {parsedProducts.map((product) => (
           <li key={product._id}>
             <a href={`/products/${product._id}`}>{product.name}</a> - $
             {product.price.toFixed(2)} <br />
-            <a href={`/products/edit/${product._id}`}>Edit</a> |{" "}
+            <form
+              action={`/products/edit/${product._id}`}
+              method="GET"
+              style={{ display: "inline" }}
+            >
+              <button type="submit">Edit</button>
+            </form>{" "}
+            |{" "}
             <form
               action={`/products/${product._id}?_method=DELETE`}
               method="POST"
