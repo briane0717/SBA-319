@@ -8,7 +8,7 @@ function ProductIndex({ products }) {
   return (
     <div>
       <h1>Product List</h1>
-      <a href="/products/new"></a>
+
       <ul>
         {parsedProducts.map((product) => (
           <li key={product._id}>
@@ -32,7 +32,9 @@ function ProductIndex({ products }) {
           </li>
         ))}
       </ul>
-      <button type="button">Add New Product</button>
+      <button type="button">
+        <a href="/products/new">Add New Product</a>{" "}
+      </button>
     </div>
   );
 }

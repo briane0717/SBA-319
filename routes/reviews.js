@@ -18,13 +18,8 @@ router.get("/new", async (req, res) => {
 });
 
 router.post("/new", async (req, res) => {
+  console.log(req.body);
   const { title, product, user, body, rating, verified } = req.body;
-
-  if (!title || !product || !user || !body) {
-    return res
-      .status(400)
-      .json({ error: "Title, product, user, and body are required fields." });
-  }
 
   try {
     const newReview = await Reviews.create({
